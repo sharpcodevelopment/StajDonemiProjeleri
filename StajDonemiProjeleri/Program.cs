@@ -33,7 +33,7 @@
             {
                 Console.WriteLine("Ders girecek misiniz? (evet için 'e', hayır için 'h' basınız)");
                 char cevap = Console.ReadKey().KeyChar;
-                Console.WriteLine(); // Bir sonraki satıra geçmek için
+                Console.WriteLine(); 
 
                 if (cevap == 'h')
                 {
