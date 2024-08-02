@@ -69,7 +69,7 @@
                         }
                     }
 
-                    double ortalama = NotHesapla(dersNotlari[ders]);
+                    double ortalama = notHesapla(dersNotlari[ders]);
                     dersOrtalamalari[ders] = ortalama;
                 }
                 else
@@ -84,7 +84,7 @@
             }
         }
 
-        static double NotHesapla(List<int> notlar)
+        static double notHesapla(List<int> notlar)
         {
             if (notlar.Count == 0)
             {
