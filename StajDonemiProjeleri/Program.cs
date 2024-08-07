@@ -1,148 +1,24 @@
-﻿namespace StajDonemiProjeleri
+﻿namespace CsharpStajDefterOrnek
 {
     internal class Program
     {
         static void Main(string[] args)
-        {   
-
-            //while (true)
-            //{
-            //    Console.WriteLine("lütfen dersin adını giriniz");
-            //    string ders = Console.ReadLine();
-            //    Console.WriteLine("not girmek istiyormusunuz" +
-            //        "evet için e /" +
-            //        "hayır için h basınız");
-            //    char devammi=Convert.ToChar(Console.ReadLine());
-            //    if (devammi == 'e')
-            //    {
-            //        Console.WriteLine("başarılı");
-            //    }
-            //    else if(devammi=='h')
-            //    {
-            //        break;
-            //    }
-            //    else 
-            //    {
-            //        Console.WriteLine("lütfen bir ders giriniz");
-            //    }
-            //}
-            Dictionary<string, List<int>> dersNotlari = new Dictionary<string, List<int>>();
-            Dictionary<string, double> dersOrtalamalari = new Dictionary<string, double>();
-
-            while (true)
-            {
-                Console.WriteLine("Ders girecek misiniz? (evet için 'e', hayır için 'h' basınız)");
-                char cevap = Console.ReadKey().KeyChar;
-                Console.WriteLine(); 
-
-                if (cevap == 'h')
-                {
-                    break;
-                }
-
-                if (cevap == 'e')
-                {
-                    Console.WriteLine("Lütfen ders adını girin:");
-                    string ders = Console.ReadLine();
-
-                    if (!dersNotlari.ContainsKey(ders))
-                    {
-                        dersNotlari[ders] = new List<int>();
-                    }
-
-                    while (true)
-                    {
-                        Console.WriteLine("Lütfen notu girin (bitirmek için 'b' basınız):");
-                        string notInput = Console.ReadLine();
-                        if (notInput.ToLower() == "b")
-                        {
-                            break;
-                        }
-
-                        if (int.TryParse(notInput, out int not))
-                        {
-                            dersNotlari[ders].Add(not);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Geçersiz not, lütfen bir sayı girin.");
-                        }
-                    }
-
-                    double ortalama = notHesapla(dersNotlari[ders]);
-                    dersOrtalamalari[ders] = ortalama;
-                }
-                else
-                {
-                    Console.WriteLine("Geçersiz giriş, lütfen 'e' veya 'h' basınız.");
-                }
-            }
-
-            foreach (var ders in dersOrtalamalari)
-            {
-                Console.WriteLine($"{ders.Key} dersinin not ortalaması: {ders.Value:F2}");
-            }
-        }
-
-        static double notHesapla(List<int> notlar)
         {
-            if (notlar.Count == 0)
-            {
-                return 0;
-            }
+           StajDefteri defter = new StajDefteri();
+            defter.projeEkle(new Proje { Name = "e-ticaret sitesi", Description = "full responsive e ticaret sitesi tasarlama" });
+            defter.gunlukEkle(new GunlukKaydi{History=DateTime.Now, Description="ilk gün" });
+            defter.gunlukEkle(new GunlukKaydi { History = DateTime.Now.AddDays(1), Description ="html ve css tasarlanacak"});
 
-            double toplam = 0;
-            foreach (int not in notlar)
-            {
-                toplam += not;
-            }
+            defter.gorev(new Gorev { Name="veritabanı",Description="veritabanı tasarlama ve yönetme",Complete=true});
+            defter.gorev(new Gorev { Name="web sayfa tasarımı ",Description="tasarımları kodlama",Complete=false});
 
-            return toplam / notlar.Count;
+            defter.yazdir();
+
+            Console.WriteLine("Bitti");
+
+
+
+
         }
-
-
     }
-
-      
-
-        //public static void dersAdi()
-        //{
-        //    List<string> dersler = new List<string>();
-        //    while (true)
-        //    {
-
-        //        Console.WriteLine("ders girecekmisiniz");
-
-        //        char cevap = Convert.ToChar(Console.ReadLine());
-                
-
-        //        if (cevap == 'h')
-        //        {
-        //            break;
-        //        }
-
-        //        if (cevap == 'e')
-        //        {
-        //            Console.WriteLine("lütfen ders gir ");
-        //            string ders = Console.ReadLine();
-        //            dersler.Add(ders);
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("geçersiz değer girdiniz");
-        //        }
-
-        //    }
-        //    foreach (string s in dersler)
-        //    {
-        //        Console.WriteLine(s);
-        //    }
-        //}
-        //public static int notHesaplama()
-        //{
-        //    string ders1;
-        //    return 0;
-        //}
-    }
-     
-
+}
